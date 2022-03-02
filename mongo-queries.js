@@ -190,20 +190,19 @@ db.product.find().pretty()
 db.product.find({product_price:{"$gte":400,"$lte":800}}).pretty()
 //3) Find the product price which are not between 400 to 600
 db.product.find({$or:[{"product_price":{$lte:400}},{"product_price":{$gte:600}}]})
-
-
-//5) List the four product which are grater than 500 in price 
+//4) List the four product which are grater than 500 in price 
 //Apply limit
 db.product.find({product_price:{"$gt":500}}).limit(4).pretty()
-//6) Find the product name and product material of each products
-//7) Find the product with a row id of 10
+//5) Find the product name and product material of each products
+db.product.find({},{_id:0,product_name:1,product_material:1}).pretty()
+//6) Find the product with a row id of 10
 db.product.find({"id":"10"}).pretty()
-//8) Find only the product name and product material
+//7) Find only the product name and product material
 db.product.find({},{_id:0,product_name:1,product_material:1}).pretty()
 //giving 1 will include those fields and sort them by product material
 db.product.find({},{_id:0,product_name:1,product_material:1}).sort({product_material:1}).pretty()
-//9)Find all products which contain the value of soft in product material 
+//8)Find all products which contain the value of soft in product material 
 db.product.find({product_material:"Soft"}).pretty()
-//10) Find products which contain product color indigo  and product price 492.00
+//9) Find products which contain product color indigo  and product price 492.00
 db.product.find({product_color:"indigo",product_price: 492}).pretty()
-//11) Delete the products which product price value are same
+//10) Delete the products which product price value are same
